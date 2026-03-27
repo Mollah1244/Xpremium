@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XPremium — Trusted Twitter Premium Provider</title>
+<meta name="description" content="Get genuine Twitter Premium at the best price worldwide. Crypto payments accepted. Fast delivery, 24/7 support.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --w:#ffffff; --off:#f6f8fc; --subtle:#edf1f8;
+    --blue:#0057ff; --blue2:#3375ff; --blue-bg:#e6eeff;
+    --navy:#07122a; --text:#192038; --muted:#64748b; --border:#dde3ee;
+    --orange:#ff6b2b; --green:#00b87a;
+    --sh:0 2px 24px rgba(0,87,255,.07); --sh2:0 16px 48px rgba(0,87,255,.14);
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--w);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+  nav{position:fixed;top:0;inset-inline:0;z-index:300;height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;background:rgba(255,255,255,.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+  .logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+  .logo-icon{width:36px;height:36px;border-radius:9px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:17px}
+  .logo-name{font-family:'Fraunces',serif;font-size:19px;font-weight:800;color:var(--navy)}
+  .nav-links{display:flex;align-items:center;gap:28px}
+  .nav-link{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s}
+  .nav-link:hover{color:var(--blue)}
+  .nav-cta{background:var(--blue);color:#fff;font-size:13.5px;font-weight:600;padding:10px 22px;border-radius:8px;text-decoration:none;transition:all .2s}
+  .nav-cta:hover{background:#0042cc;transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,87,255,.3)}
+
+  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 56px 80px;position:relative;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 900px 700px at 72% 50%,rgba(0,87,255,.055) 0%,transparent 65%),linear-gradient(160deg,#fff 40%,#f0f4ff 100%)}
+  .hero-ring{position:absolute;border-radius:50%;border:1px solid rgba(0,87,255,.09)}
+  .r1{width:420px;height:420px;top:10%;right:6%}
+  .r2{width:240px;height:240px;top:22%;right:13%}
+  .r3{width:120px;height:120px;top:30%;right:18%}
+  .hero-content{position:relative;z-index:2;max-width:660px}
+
+  .pill{display:inline-flex;align-items:center;gap:8px;background:var(--blue-bg);color:var(--blue);font-size:13px;font-weight:600;padding:7px 16px;border-radius:30px;margin-bottom:26px;opacity:0;animation:up .7s .1s ease forwards}
+  .pill-dot{width:7px;height:7px;border-radius:50%;background:var(--blue);animation:blink 2s infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+
+  .hero h1{font-family:'Fraunces',serif;font-size:clamp(46px,5.8vw,76px);font-weight:900;line-height:1.04;letter-spacing:-2px;color:var(--navy);margin-bottom:22px;opacity:0;animation:up .7s .2s ease forwards}
+  .hero h1 em{font-style:normal;color:var(--blue);position:relative}
+  .hero h1 em::after{content:'';position:absolute;bottom:4px;left:0;right:0;height:3px;background:var(--blue);border-radius:2px;opacity:.25}
+  .hero-sub{font-size:18px;font-weight:300;color:var(--muted);line-height:1.8;max-width:520px;margin-bottom:38px;opacity:0;animation:up .7s .3s ease forwards}
+  .hero-btns{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:up .7s .4s ease forwards}
+
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;transition:all .25s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif}
+  .btn-blue{background:var(--blue);color:#fff}
+  .btn-blue:hover{background:#0042cc;transform:translateY(-2px);box-shadow:0 10px 32px rgba(0,87,255,.28)}
+  .btn-ghost{background:var(--w);color:var(--text);border:1.5px solid var(--border)}
+  .btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+
+  .trust-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:48px;opacity:0;animation:up .7s .55s ease forwards}
+  .tr-item{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--muted);font-weight:500}
+  .tr-div{width:1px;height:16px;background:var(--border)}
+
+  .crypto-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:20px;opacity:0;animation:up .7s .65s ease forwards}
+  .crypto-tag{display:flex;align-items:center;gap:6px;background:var(--off);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12px;font-weight:600;color:var(--text)}
+  .crypto-label{font-size:12px;color:var(--muted)}
+
+  @keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+  .stats-strip{background:var(--navy);padding:56px;display:grid;grid-template-columns:repeat(4,1fr)}
+  .st{text-align:center;padding:16px;border-right:1px solid rgba(255,255,255,.07)}
+  .st:last-child{border-right:none}
+  .st-n{font-family:'Fraunces',serif;font-size:46px;font-weight:900;color:#fff;letter-spacing:-1.5px;line-height:1;display:block}
+  .st-n em{font-style:normal;color:var(--blue2)}
+  .st-d{font-size:13px;color:rgba(255,255,255,.38);margin-top:8px}
+
+  .wrap{max-width:1140px;margin:0 auto;padding:96px 56px}
+  .wrap-bg{background:var(--off)}
+  .eyebrow{font-size:11.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue);margin-bottom:12px;display:block}
+  .s-title{font-family:'Fraunces',serif;font-size:clamp(28px,3.5vw,46px);font-weight:800;letter-spacing:-.8px;color:var(--navy);line-height:1.12;margin-bottom:14px}
+  .s-body{font-size:17px;color:var(--muted);font-weight:300;line-height:1.8;max-width:560px;margin-bottom:52px}
+
+  .proof-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .pc{background:var(--w);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .3s}
+  .pc:hover{border-color:rgba(0,87,255,.22);box-shadow:var(--sh2);transform:translateY(-3px)}
+  .pc-hd{padding:16px 20px;border-bottom:1px solid var(--border);background:var(--off);display:flex;align-items:center;gap:11px}
+  .pc-ic{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+  .ic-b{background:#e6f3ff}.ic-s{background:#fff8e0}.ic-v{background:#ffe8e8}.ic-g{background:#e4faf1}
+  .pc-t{font-size:14px;font-weight:600;color:var(--navy)}.pc-st{font-size:12px;color:var(--muted)}
+  .pc-bd{padding:20px}
+
+  .chat{display:flex;flex-direction:column;gap:9px}
+  .bbl{padding:10px 13px;border-radius:12px;font-size:13px;line-height:1.55;max-width:84%}
+  .bbl.in{background:var(--subtle);border-bottom-left-radius:3px;align-self:flex-start;color:var(--text)}
+  .bbl.out{background:var(--blue);color:#fff;border-bottom-right-radius:3px;align-self:flex-end;text-align:right}
+  .bbl-t{font-size:10px;opacity:.5;margin-top:3px}
+
+  .revs{display:flex;flex-direction:column;gap:12px}
+  .rev{padding:13px 15px;border-radius:12px;border:1px solid var(--border)}
+  .rev-top{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+  .rev-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--blue),#0030aa);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
+  .rev-name{font-size:13px;font-weight:600;color:var(--navy)}.rev-handle{font-size:11px;color:var(--muted)}
+  .rev-stars{margin-left:auto;color:#f5a623;font-size:12px}
+  .rev-txt{font-size:13px;color:var(--muted);line-height:1.55}
+
+  .vid{background:var(--navy);border-radius:12px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;position:relative;overflow:hidden}
+  .vid::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 40% 40%,rgba(0,87,255,.22),transparent 60%)}
+  .play-btn{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;z-index:1;cursor:pointer;transition:all .25s}
+  .play-btn:hover{background:rgba(0,87,255,.5);transform:scale(1.1)}
+  .vid-lbl{font-size:13px;color:rgba(255,255,255,.45);z-index:1}
+
+  .del{background:var(--off);border-radius:12px;padding:15px}
+  .del-r{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px}
+  .del-r:last-child{border-bottom:none}
+  .del-k{color:var(--muted)}.del-v{font-weight:600;color:var(--navy)}
+  .bg{background:#e4faf1;color:#009962;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
+  .bb{background:var(--blue-bg);color:var(--blue);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
+
+  .pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:760px;margin:0 auto}
+  .price-card{background:var(--w);border:1.5px solid var(--border);border-radius:20px;padding:34px 30px;position:relative;transition:all .3s}
+  .price-card:hover{transform:translateY(-4px);box-shadow:var(--sh2)}
+  .price-card.hot{border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,87,255,.07)}
+  .hot-tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:11.5px;font-weight:700;padding:5px 18px;border-radius:20px;white-space:nowrap}
+  .discount-tag{position:absolute;top:20px;right:20px;background:var(--orange);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+  .p-plan{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .p-amt{font-family:'Fraunces',serif;font-size:52px;font-weight:900;color:var(--navy);letter-spacing:-2px;line-height:1}
+  .p-amt sup{font-size:24px;vertical-align:super}
+  .p-orig{font-size:13px;color:var(--muted);text-decoration:line-through;margin-top:2px}
+  .p-period{font-size:13px;color:var(--muted);margin-top:4px;margin-bottom:22px}
+  .p-div{height:1px;background:var(--border);margin:18px 0}
+  .p-feats{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:26px}
+  .p-feats li{display:flex;align-items:flex-start;gap:9px;font-size:14px;color:var(--text)}
+  .p-feats li::before{content:'✓';color:var(--blue);font-weight:700;flex-shrink:0;line-height:1.45}
+  .p-btn{width:100%;justify-content:center}
+
+  .crypto-section{background:var(--navy);border-radius:20px;padding:40px;display:flex;align-items:center;gap:40px;flex-wrap:wrap;margin-top:56px}
+  .crypto-left{flex:1;min-width:200px}
+  .crypto-left h3{font-family:'Fraunces',serif;font-size:26px;font-weight:800;color:#fff;margin-bottom:10px}
+  .crypto-left p{font-size:15px;color:rgba(255,255,255,.5);line-height:1.7}
+  .crypto-coins{display:flex;gap:12px;flex-wrap:wrap}
+  .coin{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px 16px;color:#fff;font-size:14px;font-weight:600;transition:all .25s}
+  .coin:hover{background:rgba(0,87,255,.2);border-color:rgba(0,87,255,.4)}
+  .coin span{font-size:20px}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;position:relative}
+  .steps::before{content:'';position:absolute;top:28px;left:16%;right:16%;height:1px;background:var(--border);z-index:0}
+  .step{text-align:center;position:relative;z-index:1}
+  .step-n{width:56px;height:56px;border-radius:50%;background:var(--w);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:var(--blue);box-shadow:var(--sh)}
+  .step-t{font-size:16px;font-weight:600;color:var(--navy);margin-bottom:8px}
+  .step-d{font-size:14px;color:var(--muted);line-height:1.7}
+
+  .faq-list{display:flex;flex-direction:column;gap:12px;max-width:720px;margin:0 auto}
+  .faq-item{background:var(--w);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+  .faq-q{width:100%;padding:18px 22px;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;color:var(--navy);text-align:left;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:color .2s}
+  .faq-q:hover{color:var(--blue)}
+  .faq-arrow{font-size:18px;transition:transform .3s;flex-shrink:0}
+  .faq-item.open .faq-arrow{transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s;font-size:14px;color:var(--muted);line-height:1.75;padding:0 22px}
+  .faq-item.open .faq-a{max-height:200px;padding:0 22px 18px}
+
+  .cta-wrap{background:var(--blue);padding:90px 56px;text-align:center;position:relative;overflow:hidden}
+  .cta-wrap::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(255,255,255,.1),transparent 60%)}
+  .cta-wrap h2{font-family:'Fraunces',serif;font-size:clamp(30px,4vw,54px);font-weight:900;color:#fff;letter-spacing:-1.2px;margin-bottom:14px;position:relative;z-index:1}
+  .cta-wrap p{font-size:17px;color:rgba(255,255,255,.7);max-width:480px;margin:0 auto 40px;line-height:1.75;position:relative;z-index:1}
+  .contact-grid{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+  .c-btn{display:flex;align-items:center;gap:12px;padding:16px 30px;border-radius:14px;font-size:14px;font-weight:600;text-decoration:none;transition:all .25s;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.2);color:#fff}
+  .c-btn:hover{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.4);transform:translateY(-2px)}
+  .ci{font-size:24px}.c-num{font-size:12px;opacity:.7;margin-top:2px}
+
+  footer{padding:32px 56px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);flex-wrap:wrap;gap:12px}
+  .f-logo{font-family:'Fraunces',serif;font-size:17px;font-weight:800;color:var(--navy)}
+  .f-meta{font-size:13px;color:var(--muted)}
+  .f-meta a{color:var(--blue);text-decoration:none}
+
+  .sr{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  .sr.in{opacity:1;transform:none}
+
+  @media(max-width:900px){
+    nav{padding:0 20px}
+    .nav-links .nav-link{display:none}
+    .hero{padding:100px 20px 60px}
+    .stats-strip{grid-template-columns:repeat(2,1fr);padding:40px 20px}
+    .wrap{padding:70px 20px}
+    .proof-grid,.pricing-grid,.steps{grid-template-columns:1fr}
+    .steps::before{display:none}
+    .cta-wrap{padding:60px 20px}
+    footer{padding:28px 20px;flex-direction:column;text-align:center}
+    .crypto-section{padding:28px 20px;flex-direction:column;gap:24px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-icon">𝕏</div>
+    <span class="logo-name">XPremium</span>
+  </a>
+  <div class="nav-links">
+    <a href="#proof" class="nav-link">Proof</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
+    <a href="#how" class="nav-link">How It Works</a>
+    <a href="#faq" class="nav-link">FAQ</a>
+    <a href="#contact" class="nav-cta">Order Now →</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ring r1"></div>
+  <div class="hero-ring r2"></div>
+  <div class="hero-ring r3"></div>
+  <div class="hero-content">
+    <div class="pill"><span class="pill-dot"></span>Trusted by 1,000+ clients worldwide</div>
+    <h1>Twitter <em>Premium</em><br>at the Best Price</h1>
+    <p class="hero-sub">Genuine Twitter Premium — verified blue checkmark, edit tweets, longer posts, priority replies — at a fraction of the official price. Worldwide delivery.</p>
+    <div class="hero-btns">
+      <a href="#pricing" class="btn btn-blue">See Pricing →</a>
+      <a href="#proof" class="btn btn-ghost">View Proof</a>
+    </div>
+    <div class="trust-row">
+      <div class="tr-item">✅ 100% Genuine</div>
+      <div class="tr-div"></div>
+      <div class="tr-item">⚡ Instant Delivery</div>
+      <div class="tr-div"></div>
+      <div class="tr-item">🌍 Worldwide</div>
+      <div class="tr-div"></div>
+      <div class="tr-item">🔒 Crypto Only</div>
+    </div>
+    <div class="crypto-row">
+      <span class="crypto-label">Accepted:</span>
+      <div class="crypto-tag"><span>₿</span> BTC</div>
+      <div class="crypto-tag"><span>◎</span> USDT</div>
+      <div class="crypto-tag"><span>Ξ</span> ETH</div>
+      <div class="crypto-tag"><span>◈</span> LTC</div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="st sr"><span class="st-n">1<em>K+</em></span><div class="st-d">Happy Clients</div></div>
+  <div class="st sr"><span class="st-n">2<em>+</em></span><div class="st-d">Years Active</div></div>
+  <div class="st sr"><span class="st-n">99<em>%</em></span><div class="st-d">Positive Feedback</div></div>
+  <div class="st sr"><span class="st-n">15<em>m</em></span><div class="st-d">Avg. Delivery</div></div>
+</div>
+
+<div class="wrap" id="proof">
+  <span class="eyebrow sr">Social Proof</span>
+  <h2 class="s-title sr">Real Clients.<br>Real Results.</h2>
+  <p class="s-body sr">No fake screenshots. Every conversation, review, and delivery record below is 100% authentic.</p>
+  <div class="proof-grid">
+
+    <div class="pc sr">
+      <div class="pc-hd">
+        <div class="pc-ic ic-b">💬</div>
+        <div><div class="pc-t">Client Conversation</div><div class="pc-st">Real DM screenshot</div></div>
+      </div>
+      <div class="pc-bd">
+        <div class="chat">
+          <div class="bbl in">Hi! How much for Twitter Premium? I'm in UAE.<div class="bbl-t">✓✓ 10:14</div></div>
+          <div class="bbl out">Hello! 3 months — only $4. Delivery under 15 mins 🚀<div class="bbl-t">✓✓ 10:15</div></div>
+          <div class="bbl in">Wow that's amazing! Crypto accepted?<div class="bbl-t">✓✓ 10:16</div></div>
+          <div class="bbl out">Yes — USDT, BTC, ETH all accepted ✅<div class="bbl-t">✓✓ 10:17</div></div>
+          <div class="bbl in">Done! Premium activated. Thank you! 🙏<div class="bbl-t">✓✓ 10:29</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc sr">
+      <div class="pc-hd">
+        <div class="pc-ic ic-s">⭐</div>
+        <div><div class="pc-t">Client Reviews on X</div><div class="pc-st">Real Twitter feedback</div></div>
+      </div>
+      <div class="pc-bd">
+        <div class="revs">
+          <div class="rev">
+            <div class="rev-top">
+              <div class="rev-av">A</div>
+              <div><div class="rev-name">Ahmed Al-Rashidi</div><div class="rev-handle">@ahmed_ksa · Saudi Arabia</div></div>
+              <div class="rev-stars">★★★★★</div>
+            </div>
+            <div class="rev-txt">Got it in 10 minutes. 100% legit, blue checkmark active. Already ordered for 3 more accounts!</div>
+          </div>
+          <div class="rev">
+            <div class="rev-top">
+              <div class="rev-av">K</div>
+              <div><div class="rev-name">Khalid M.</div><div class="rev-handle">@khalid_me · Kuwait</div></div>
+              <div class="rev-stars">★★★★★</div>
+            </div>
+            <div class="rev-txt">Best price I found globally. Paid in USDT, got premium in minutes. Zero issues. Highly recommend 🏆</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc sr">
+      <div class="pc-hd">
+        <div class="pc-ic ic-v">🎥</div>
+        <div><div class="pc-t">Video Proof</div><div class="pc-st">Screen-recorded activation demo</div></div>
+      </div>
+      <div class="pc-bd">
+        <div class="vid">
+          <div class="play-btn">▶</div>
+          <div class="vid-lbl">Live Activation Demo — 2 min</div>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin-top:11px;text-align:center;">Full walkthrough: crypto payment → Premium badge live</p>
+      </div>
+    </div>
+
+    <div class="pc sr">
+      <div class="pc-hd">
+        <div class="pc-ic ic-g">✅</div>
+        <div><div class="pc-t">Delivery Confirmation</div><div class="pc-st">Order completion record</div></div>
+      </div>
+      <div class="pc-bd">
+        <div class="del">
+          <div class="del-r"><span class="del-k">Plan</span><span class="del-v">Twitter Premium ✓</span></div>
+          <div class="del-r"><span class="del-k">Status</span><span class="bg">Active</span></div>
+          <div class="del-r"><span class="del-k">Delivery Time</span><span class="del-v">9 minutes</span></div>
+          <div class="del-r"><span class="del-k">Duration</span><span class="del-v">3 months</span></div>
+          <div class="del-r"><span class="del-k">Payment</span><span class="bb">USDT Crypto</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="wrap-bg" id="pricing">
+  <div class="wrap" style="padding-top:96px;padding-bottom:96px">
+    <span class="eyebrow sr" style="display:block;text-align:center">Pricing</span>
+    <h2 class="s-title sr" style="text-align:center">Simple, Honest Plans</h2>
+    <p class="s-body sr" style="text-align:center;margin:0 auto 52px">No hidden fees. Pay in crypto, get Premium instantly.</p>
+
+    <div class="pricing-grid">
+      <div class="price-card sr">
+        <div class="p-plan">3 Months</div>
+        <div class="p-amt"><sup>$</sup>4</div>
+        <div class="p-period">for 3 months &nbsp;·&nbsp; ~$1.33/mo</div>
+        <div class="p-div"></div>
+        <ul class="p-feats">
+          <li>Twitter Premium badge</li>
+          <li>Edit tweets feature</li>
+          <li>Longer posts &amp; threads</li>
+          <li>Priority replies boost</li>
+          <li>Delivery within 24h</li>
+          <li>Crypto payment only</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost p-btn">Order Now</a>
+      </div>
+
+      <div class="price-card hot sr">
+        <div class="hot-tag">🔥 Best Value</div>
+        <div class="discount-tag">LIMITED DEAL</div>
+        <div class="p-plan">6 Months</div>
+        <div class="p-amt"><sup>$</sup>7</div>
+        <div class="p-orig">Regular price: $8</div>
+        <div class="p-period">for 6 months &nbsp;·&nbsp; ~$1.17/mo</div>
+        <div class="p-div"></div>
+        <ul class="p-feats">
+          <li>All 3-month features</li>
+          <li>Blue Checkmark verified</li>
+          <li>Priority support</li>
+          <li>Delivery within 1 hour</li>
+          <li>Renewal reminder</li>
+          <li>Save $1 — limited time only</li>
+        </ul>
+        <a href="#contact" class="btn btn-blue p-btn">Grab Deal →</a>
+      </div>
+    </div>
+
+    <div class="crypto-section sr">
+      <div class="crypto-left">
+        <h3>🔒 Crypto Payments Only</h3>
+        <p>We accept all major cryptocurrencies. Fast, private, and borderless. Send payment → get Premium. No banks, no delays.</p>
+      </div>
+      <div class="crypto-coins">
+        <div class="coin"><span>₿</span> Bitcoin (BTC)</div>
+        <div class="coin"><span>◎</span> USDT (TRC20 / ERC20)</div>
+        <div class="coin"><span>Ξ</span> Ethereum (ETH)</div>
+        <div class="coin"><span>◈</span> Litecoin (LTC)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" id="how">
+  <span class="eyebrow sr" style="display:block;text-align:center">Process</span>
+  <h2 class="s-title sr" style="text-align:center">3 Steps to Premium</h2>
+  <p class="s-body sr" style="text-align:center;margin:0 auto 52px">Simple, fast, and fully transparent.</p>
+  <div class="steps">
+    <div class="step sr">
+      <div class="step-n">1</div>
+      <div class="step-t">Choose Your Plan</div>
+      <div class="step-d">Pick the 3-month or 6-month deal. The 6-month plan is currently discounted — grab it before it ends.</div>
+    </div>
+    <div class="step sr">
+      <div class="step-n">2</div>
+      <div class="step-t">Send Crypto Payment</div>
+      <div class="step-d">Contact us on WhatsApp or Telegram. We send the wallet address. Pay in BTC, USDT, ETH, or LTC.</div>
+    </div>
+    <div class="step sr">
+      <div class="step-n">3</div>
+      <div class="step-t">Get Activated</div>
+      <div class="step-d">Premium activated within minutes of confirmation. Blue checkmark — live. Enjoy ✓</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap-bg">
+  <div class="wrap" id="faq" style="padding-top:96px;padding-bottom:96px">
+    <span class="eyebrow sr" style="display:block;text-align:center">FAQ</span>
+    <h2 class="s-title sr" style="text-align:center;margin-bottom:48px">Common Questions</h2>
+    <div class="faq-list">
+
+      <div class="faq-item sr">
+        <button class="faq-q">Is this 100% genuine Twitter Premium? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">Yes. You receive full, genuine Twitter Premium — same product as buying directly from Twitter, just at a much lower price. All features including the blue checkmark are fully active.</div>
+      </div>
+
+      <div class="faq-item sr">
+        <button class="faq-q">Which cryptocurrencies do you accept? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">We accept Bitcoin (BTC), USDT (TRC20 and ERC20), Ethereum (ETH), and Litecoin (LTC). After you contact us, we provide the exact wallet address for your payment.</div>
+      </div>
+
+      <div class="faq-item sr">
+        <button class="faq-q">How long does delivery take? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">Most orders are activated within 15–60 minutes after payment confirmation. Maximum wait is 24 hours. The 6-month plan gets priority delivery within 1 hour.</div>
+      </div>
+
+      <div class="faq-item sr">
+        <button class="faq-q">How long is the $7 limited deal available? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">The 6-month plan is temporarily discounted from $8 to $7. This is a very limited time offer. Once it ends, the price returns to $8. Order now to lock in the deal.</div>
+      </div>
+
+      <div class="faq-item sr">
+        <button class="faq-q">Do you serve clients worldwide? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">Yes. We serve clients globally — Middle East, Southeast Asia, Europe, Africa, Americas, and beyond. If you can message us on Telegram or WhatsApp, we can serve you.</div>
+      </div>
+
+      <div class="faq-item sr">
+        <button class="faq-q">Is it safe to buy? What if something goes wrong? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">We have 2+ years of experience and 1,000+ satisfied clients. If any issue arises after delivery, contact us on Telegram or WhatsApp and we will resolve it promptly.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="cta-wrap" id="contact">
+  <h2>Ready to Order?</h2>
+  <p>Message us on WhatsApp or Telegram. Fast reply — usually within minutes. Worldwide service.</p>
+  <div class="contact-grid">
+    <a href="https://wa.me/8801798580404" target="_blank" rel="noopener" class="c-btn">
+      <span class="ci">💬</span>
+      <div><div>WhatsApp</div><div class="c-num">+880 1798-580404</div></div>
+    </a>
+    <a href="https://t.me/+8801798580404" target="_blank" rel="noopener" class="c-btn">
+      <span class="ci">✈️</span>
+      <div><div>Telegram</div><div class="c-num">+880 1798-580404</div></div>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="f-logo">𝕏 XPremium</div>
+  <div class="f-meta">Trusted provider · Worldwide service · Crypto payments only</div>
+  <div class="f-meta">© 2025 XPremium &nbsp;·&nbsp; <a href="https://wa.me/8801798580404">Contact Us</a></div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach((e,i) => {
+      if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('in'),i*65); io.unobserve(e.target); }
+    });
+  },{threshold:.1});
+  document.querySelectorAll('.sr').forEach(el=>io.observe(el));
+
+  document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const item=btn.parentElement;
+      const isOpen=item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(f=>f.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
